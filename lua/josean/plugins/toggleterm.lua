@@ -91,8 +91,10 @@ return {
       ------------------- PANDA CODEGEN ----------------------
 
       vim.keymap.set("n", "<leader>swp", function()
-        local run_script = require("josean.scripts.plugins.script-runner")
-        run_script({ "pnpm panda", "pnpm codegen" })
+        Terminal:new({
+          cmd = "pnpm panda && pnpm codegen",
+          hidden = false,
+        }):toggle()
       end, { desc = "Panda generate" })
 
       ------------------- NUKE PORTS AND NODE ----------------------
