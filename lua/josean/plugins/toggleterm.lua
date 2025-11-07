@@ -88,6 +88,15 @@ return {
         { desc = "Generate icon from downloaded svg" }
       )
 
+      ------------------- PLAYWRIGHT TEST ----------------------
+
+      vim.keymap.set(
+        "n",
+        "<leader>swe",
+        require("josean.scripts.web.playwright-test"),
+        { desc = "Run Playwright test for current file" }
+      )
+
       ------------------- PANDA CODEGEN ----------------------
 
       vim.keymap.set("n", "<leader>swp", function()
