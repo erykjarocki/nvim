@@ -70,7 +70,10 @@ vim.api.nvim_create_autocmd("LspAttach", {
       vim.api.nvim_create_autocmd("BufWritePre", {
         buffer = bufnr,
         callback = function()
-          vim.cmd("LspEslintFixAll")
+          local success, err = pcall(vim.cmd, "LspEslintFixAll")
+          if not success then
+            vim.notify("ESLint fix failed: " .. tostring(err), vim.log.levels.WARN)
+          end
         end,
       })
     end
