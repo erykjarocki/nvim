@@ -46,3 +46,24 @@ opt.swapfile = false
 
 -- vim session for plugin auto-session
 vim.o.sessionoptions = "blank,buffers,curdir,folds,help,tabpages,winsize,winpos,terminal,localoptions"
+
+-- detect changes of file in disc
+-- when change occurs run :e
+vim.opt.autoread = true
+vim.api.nvim_create_autocmd({ "FocusGained", "BufEnter" }, {
+  pattern = "*",
+  command = "checktime",
+})
+
+---------------------------------------------------------------------------
+
+-- persist undo between open and close editor
+vim.opt.undofile = true
+vim.opt.undodir = vim.fn.stdpath("state") .. "/undo"
+
+vim.diagnostic.config({
+  virtual_text = false,
+  signs = {
+    priority = 6,
+  },
+})

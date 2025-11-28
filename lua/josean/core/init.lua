@@ -1,30 +1,6 @@
 require("josean.core.options")
 require("josean.core.keymaps")
-
----------------------------------------------------------------------------
-
--- detect changes of file in disc
--- when change occurs run :e
-vim.opt.autoread = true
-vim.api.nvim_create_autocmd({ "FocusGained", "BufEnter" }, {
-  pattern = "*",
-  command = "checktime",
-})
-
----------------------------------------------------------------------------
-
--- persist undo between open and close editor
-vim.opt.undofile = true
-vim.opt.undodir = vim.fn.stdpath("state") .. "/undo"
-
-vim.diagnostic.config({
-  virtual_text = false,
-  signs = {
-    priority = 6,
-  },
-})
-
----------------------------------------------------------------------------
+require("josean.scripts.plugins.ports").start(3000)
 
 local keymap = vim.keymap -- for conciseness
 
@@ -74,13 +50,3 @@ vim.api.nvim_create_autocmd("LspAttach", {
     keymap.set("n", "K", vim.lsp.buf.hover, opts) -- show documentation for what is under cursor
   end,
 })
-
--- Change the Diagnostic symbols in the sign column (gutter)
--- (not in youtube nvim video)
-local signs = { Error = " ", Warn = " ", Hint = "󰠠 ", Info = " " }
-for type, icon in pairs(signs) do
-  local hl = "DiagnosticSign" .. type
-  vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = "" })
-end
-
-require("josean.scripts.plugins.ports").start(3000)
