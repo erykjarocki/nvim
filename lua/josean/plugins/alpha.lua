@@ -100,14 +100,43 @@ return {
     }
 
     local function open_oldfiles_and_explorer()
-      -- Open Telescope oldfiles and select the last file
-      vim.api.nvim_command("Telescope oldfiles")
-      vim.defer_fn(function()
-        vim.api.nvim_input("<CR>") -- Simulate pressing Enter to open the selected file
-        vim.defer_fn(function()
-          vim.api.nvim_command("NvimTreeFindFile")
-        end, 50) -- Delay for a short period to allow the file to open
-      end, 100) -- Delay to ensure Telescope oldfiles is open
+      local ok, telescope = pcall(require, "telescope.builtin")
+      if not ok then
+        return
+      end
+
+      local actions = require("telescope.actions")
+      local action_state = require("telescope.actions.state")
+
+      telescope.oldfiles({
+        attach_mappings = function(_, map)
+          local function open_and_reveal()
+            local entry = action_state.get_selected_entry()
+            actions.close(_)
+
+            if not entry or not entry.path then
+              return
+            end
+
+            -- open file
+            vim.cmd("edit " .. vim.fn.fnameescape(entry.path))
+
+            -- remember current window
+            local file_win = vim.api.nvim_get_current_win()
+
+            -- reveal in nvim-tree
+            pcall(vim.cmd, "NvimTreeFindFile")
+
+            -- go back to file window
+            vim.api.nvim_set_current_win(file_win)
+          end
+
+          map("i", "<CR>", open_and_reveal)
+          map("n", "<CR>", open_and_reveal)
+
+          return true
+        end,
+      })
     end
 
     vim.api.nvim_create_user_command("OpenOldfilesAndExplorer", open_oldfiles_and_explorer, {})
