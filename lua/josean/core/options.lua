@@ -12,7 +12,9 @@ opt.expandtab = true
 opt.autoindent = true
 
 opt.wrap = false
-
+--
+-- Improves performance when running macros or scripts on large files.
+vim.opt.lazyredraw = true
 -- search settings
 opt.ignorecase = true
 opt.smartcase = true -- if you include mixed case in your search, assumes you want case-sensitive
