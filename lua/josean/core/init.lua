@@ -65,5 +65,4 @@ for type, icon in pairs(signs) do
   vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = "" })
 end
 
-require("josean.scripts.plugins.lsp-status").setup()
 require("josean.scripts.plugins.ports").start(3000)
