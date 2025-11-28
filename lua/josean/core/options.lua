@@ -30,7 +30,7 @@ opt.termguicolors = true
 opt.background = "dark" -- colorschemes that can be light or dark will be made dark
 --
 -- show sign column so that text doesn't shift
-opt.signcolumn = "auto:2"
+opt.signcolumn = "yes:2"
 
 -- allow backspace on indent, end of line or insert mode start position
 opt.backspace = "indent,eol,start"
