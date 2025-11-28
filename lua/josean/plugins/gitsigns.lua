@@ -9,6 +9,11 @@ return {
         vim.keymap.set(mode, l, r, { buffer = bufnr, desc = desc })
       end
 
+      vim.fn.sign_define("DiagnosticSignError", { text = "", texthl = "DiagnosticError", priority = 10 })
+      vim.fn.sign_define("DiagnosticSignWarn", { text = "", texthl = "DiagnosticWarn", priority = 10 })
+      vim.fn.sign_define("DiagnosticSignInfo", { text = "", texthl = "DiagnosticInfo", priority = 10 })
+      vim.fn.sign_define("DiagnosticSignHint", { text = "", texthl = "DiagnosticHint", priority = 10 })
+
       -- Navigation
       map("n", "]h", gs.next_hunk, "Next Hunk")
       map("n", "[h", gs.prev_hunk, "Prev Hunk")
@@ -54,12 +59,12 @@ return {
       map({ "o", "x" }, "ih", ":<C-U>Gitsigns select_hunk<CR>", "Gitsigns select hunk")
     end,
     signs = {
-      add = { text = "▌" },
-      change = { text = "▌" },
-      delete = { text = "↓" },
-      topdelete = { text = "↑" },
-      changedelete = { text = "~" },
-      untracked = { text = "┆" },
+      add = { text = "▌", priority = 5 },
+      change = { text = "▌", priority = 5 },
+      delete = { text = "↓", priority = 5 },
+      topdelete = { text = "↑", priority = 5 },
+      changedelete = { text = "~", priority = 5 },
+      untracked = { text = "┆", priority = 5 },
     },
     signcolumn = true, -- Toggle with `:Gitsigns toggle_signs`
     numhl = false, -- Toggle with `:Gitsigns toggle_numhl`
