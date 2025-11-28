@@ -1,12 +1,30 @@
 require("josean.core.options")
 require("josean.core.keymaps")
 
+---------------------------------------------------------------------------
+
+-- detect changes of file in disc
+-- when change occurs run :e
+vim.opt.autoread = true
+vim.api.nvim_create_autocmd({ "FocusGained", "BufEnter" }, {
+  pattern = "*",
+  command = "checktime",
+})
+
+---------------------------------------------------------------------------
+
+-- persist undo between open and close editor
+vim.opt.undofile = true
+vim.opt.undodir = vim.fn.stdpath("state") .. "/undo"
+
 vim.diagnostic.config({
   virtual_text = false,
   signs = {
     priority = 6,
   },
 })
+
+---------------------------------------------------------------------------
 
 local keymap = vim.keymap -- for conciseness
 
