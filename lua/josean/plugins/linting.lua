@@ -1,10 +1,12 @@
 return {
   "mfussenegger/nvim-lint",
   event = { "BufReadPre", "BufNewFile" },
-  enabled = true,
+  enabled = false,
   config = function()
     local lint = require("lint")
 
+    -- check if this is necessary
+    -- and where to remove eslint_d
     lint.linters_by_ft = {
       javascript = { "eslint_d" },
       typescript = { "eslint_d" },
