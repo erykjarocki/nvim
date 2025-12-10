@@ -104,7 +104,7 @@ return {
   on_attach = function(client, bufnr)
     -- ts_ls provides `source.*` code actions that apply to the whole file. These only appear in
     -- `vim.lsp.buf.code_action()` if specified in `context.only`.
-
+    client.server_capabilities.semanticTokensProvider = nil
     vim.keymap.set("n", "<leader>cA", "<cmd>LspTypescriptSourceAction <CR>")
     vim.api.nvim_buf_create_user_command(bufnr, "LspTypescriptSourceAction", function()
       local source_actions = vim.tbl_filter(function(action)
