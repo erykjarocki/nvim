@@ -46,6 +46,10 @@ return {
         highlights.GitSignsDeletePreview = { fg = palette.git.delete, bg = palette.bg_sidebar }
         highlights.CursorColumn = { bg = palette.gray4 }
         highlights.CursorLineNr = { fg = palette.white0 }
+
+        highlights.IblScope = {
+          fg = palette.yellow.dim,
+        }
       end,
       -- override = {
       --   TelescopePromptTitle = {
