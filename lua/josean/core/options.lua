@@ -69,3 +69,14 @@ vim.diagnostic.config({
     priority = 6,
   },
 })
+
+opt.diffopt = {
+  "internal",
+  "filler",
+  "closeoff",
+  "context:12",
+  "algorithm:histogram",
+  "linematch:200",
+  "indent-heuristic",
+  "iwhite", -- I toggle this one, it doesn't fit all cases.
+}
