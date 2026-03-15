@@ -43,3 +43,7 @@ end, { expr = true })
 vim.keymap.set("n", "<leader>npml", function()
   require("josean.scripts.npm.versions").update_to_latest()
 end, { desc = "Update package to latest 📦 🆕" })
+
+vim.keymap.set("n", "<leader>td", function()
+  require("josean.branch-todos").open()
+end, { desc = "Toggle branch todos" })

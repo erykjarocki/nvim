@@ -16,12 +16,12 @@ return {
     cmp.setup({
       completion = {
         completeopt = "menu,menuone,preview",
-        autocomplete = false,
+        autocomplete = {},
         setup,
       },
       window = {
         completion = cmp.config.window.bordered({
-          max_height = 1,
+          max_height = 10,
           scrollbar = true,
         }),
       },

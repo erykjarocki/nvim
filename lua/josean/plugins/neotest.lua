@@ -1,5 +1,6 @@
 return {
   {
+    enabled = false,
     "nvim-neotest/neotest",
     version = "5.9.0",
     dependencies = {

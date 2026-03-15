@@ -1,4 +1,5 @@
 return {
+  enabled = true,
   "yetone/avante.nvim",
   -- if you want to build from source then do `make BUILD_FROM_SOURCE=true`
   -- ⚠️ must add this setting! ! !
@@ -41,7 +42,7 @@ return {
       wp = {
         __inherited_from = "openai",
         endpoint = "http://vllm-rocm-qwen3-coder.ds-mta.k8s-gpu.dc-2.dcwp.pl/v1",
-        model = "/app/vllm_models/Qwen3-Coder-480B-A35B-Instruct-FP8",
+        model = "/app/vllm_models/MiniMax-M2",
         api_key_name = "WP_API_KEY",
         timeout = 30000, -- Timeout in milliseconds
         extra_request_body = {

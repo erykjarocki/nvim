@@ -2,6 +2,7 @@ return {
   "toppair/peek.nvim",
   event = { "VeryLazy" },
   build = "deno task --quiet build:fast",
+  enabled = true,
   config = function()
     require("peek").setup({
       auto_load = true, -- whether to automatically load preview when
